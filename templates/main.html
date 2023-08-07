@@ -1,0 +1,250 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PAPERPILLAR</title>
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 992px)"
+      href="{% static 'respo2.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'bodyUpload.css' %}" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Source+Sans+Pro:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- google fonts -->
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'common.css' %}" />
+  </head>
+
+  <body style="background-color: rgb(0, 55, 206)">
+    <!-- <script src="fun.js"></script> -->
+    <!-- ////////////////////////////////////////  NAVBAR  //////////////////////////////// -->
+    <div class="navbars">
+      <!-- navbar navbar-expand-sm navbar-dark bg-dark -->
+      <!--  -->
+      <nav class="navbar navbar-expand-sm navbar-dark">
+        <a class="navbar-brand" href="#">
+          <img
+            src="{% static 'logo-removebg-preview.png' %}"
+            width="100"
+            height="100"
+            class="img1"
+            alt=""
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#expandme"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="expandme">
+          <div class="navbar-nav ml-auto">
+            <a href="#" class="nav-item nav-link" id="num1"> Home </a>
+            <a href="#" class="nav-item nav-link" id="num1"> Blog </a>
+            <a href="#" class="nav-item nav-link" id="num1"> Contact </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- ////////////////////////////////////////  NAVBAR END //////////////////////////////// -->
+
+    <!-- ////////////////////////////////////////    //////////////////////////////// -->
+
+    <div class="hero-section">
+      <div class="hero-container">
+        <div class="hero-text">
+          <h1>We Are Certificater's</h1>
+          <p>A Website to create Certificates easily</p>
+          <div class="hero-button-float">
+            <div class="hero-button-wrapper">
+              <button
+                class="btn btn-white btn-talk"
+                data-toggle="modal"
+                data-target="#contactModal"
+                onclick="scrollToSection()"
+              >
+                <i class="icon-pp-envelope"></i><span>Try it Out!</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ////////////////////////////////////////  Main part  //////////////////////////////// -->
+    <div class="row">
+      <div class="col-lg-3 col-sd-2"></div>
+      <div class="col-lg-6 col-sd-8">
+        <div class="containers" id="jump">
+          <h1 class="certificate_title">E-Certificate Generator</h1>
+          <form
+            action="{% url 'generate_certificates' %}"
+            method="post"
+            enctype="multipart/form-data"
+            onsubmit="return validateForm()"
+          >
+            {% csrf_token %}
+            <label for="names" id="namelist">Enter Names</label>
+            <textarea
+              id="names"
+              name="names"
+              placeholder="Enter comma separated names"
+              required
+            ></textarea>
+
+            <label for="font-size">Font-Size</label>
+            <input
+              type="text"
+              class="fontsize"
+              name="font_size"
+              style="text-align: center"
+              id="fontsize"
+              required
+            />
+
+            <label for="certificate-image">Upload Certificate Image</label>
+            <input
+              type="file"
+              name="certificate"
+              class="uploadCertificate"
+              id="certificate-image"
+              required
+            />
+            <button type="button" id="btn-select-coordinates" disabled>
+              Select coordinates
+            </button>
+
+            <label for="x-coordinate">X Coordinate</label>
+            <input
+              type="text"
+              class="xcord"
+              name="name_x"
+              style="text-align: center"
+              id="x-coordinate"
+              required
+            />
+
+            <label for="y-coordinate">Y Coordinate</label>
+            <input
+              type="text"
+              class="ycord"
+              name="name_y"
+              style="text-align: center"
+              id="y-coordinate"
+              required
+            />
+            <br />
+            <button type="submit" class="buttom_submit">
+              Generate E-Certificates
+            </button>
+            <br />
+          </form>
+          <div class="overlay hidden">
+            <button id="btn-overlay-close">Close</button>
+            <canvas id="canvas"></canvas>
+            <button id="btn-confirm-coordinates">Select</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sd-2"></div>
+    </div>
+    <br />
+    <!-- <label for="font-style">Select Font Style</label>
+            <select id="font-style" style="text-align: center">
+              <option value="Arial">Arial</option>
+              <option value="Times New Roman">Times New Roman</option>
+              <option value="Courier New">Courier New</option>
+            </select> -->
+    <!-- ////////////////////////////////////////  Main part END //////////////////////////////// -->
+
+    <footer class="footer footer-transparent">
+      <!-- <footer class="page-footer font-small cyan darken-3"> -->
+      <div class="container23">
+        <div class="row">
+          <div class="col-md-12 py-4">
+            <div class="para d-flex justify-content-center">
+              <h3 class="d-lg-flex">Want to connect with The Creator?</h3>
+            </div>
+            <div class="websitesss mb-5 d-flex justify-content-center">
+              <a class="fb-ic" href="#">
+                <i
+                  class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"
+                >
+                </i>
+              </a>
+              <a class="tw-ic" href="#">
+                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x">
+                </i>
+              </a>
+              <a class="gplus-ic" href="#">
+                <i
+                  class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"
+                >
+                </i>
+              </a>
+
+              <a class="ins-ic" href="#">
+                <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x">
+                </i>
+              </a>
+            </div>
+            <div class="foot d-flex justify-content-center">
+              <div class="hero-button-wrapper">
+                <button
+                  class="btn btn-white btn-talk"
+                  data-toggle="modal"
+                  data-target="#contactModal"
+                  onclick="scrollToSection()"
+                >
+                  <i class="icon-pp-envelope"></i><span>try it Out!</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'scroll.js' %}"></script>
+    <script src="{% static 'omkar.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.7.1/dist/jszip.min.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

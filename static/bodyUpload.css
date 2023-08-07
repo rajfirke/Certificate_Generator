@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+} */
+
+.containers {
+   
+    width: 100%;
+    /* margin: 40px auto; */
+    text-align: center;
+    background-color: rgb(78, 78, 44);
+    border: 2px solid #ff8b8b;
+    border-radius: 15px;
+}
+
+.certificate_title {
+    padding: 10px;
+    padding-top: 55px;
+    font-size: 36px;
+    margin-bottom: 5px;
+    text-decoration: double;
+    /* color: green; */
+
+}
+
+form {
+    color: azure;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-top: 20px;
+    font-size: 20px;
+}
+.namelist{
+    padding: 8px;
+}
+textarea {
+    width: 50%;
+    height: 100px;
+    font-size: 18px;
+    padding: 8px; /* Specifying the amount of padding */
+    box-sizing: border-box; /* Including padding in the width calculation */
+    border-radius: 7px;
+    background-color: rgb(204, 231, 255);
+}
+
+.uploadCertificate{
+    padding-left: 90px;
+}
+/* DROP DOWN FONTS */
+select {
+    width: 30%;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: rgb(204, 231, 255);
+}
+
+.fontsize, .xcord, .ycord{
+    /* padding-left: 10px; */
+    border-radius: 10px;
+    height: 40px;
+    background-color: rgb(204, 231, 255);
+}
+
+input[type="file"] {
+    margin-bottom: 20px;
+}
+.buttom_submit{
+    background-color: #64a0e9;
+    color: rgb(44, 27, 27);
+    border: blue;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+/* button[type="submit"] {
+    
+} */
+/* omkar */
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000075;
+}
+
+.hidden {
+    display: none;
+}
+
+canvas {
+    overflow: hidden;
+}
+/* omkar ends */
+
+
+
+
+
+.buttom_submit:hover {
+    background-color: #166c84;
+    border-radius: 10px;
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+/* 
+.footer-links {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.footer-links li {
+    margin-left: 20px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+} */
