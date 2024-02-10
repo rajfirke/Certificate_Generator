@@ -9,7 +9,7 @@ Key Features:
 - Upload certificate images
 - Enter participant/winner names
 - Set printing coordinates
-- Download certificates in a zip file, named after participants
+- Download certificates in a zip file, named after the participants
 
 ## Motivation
 
@@ -35,7 +35,7 @@ The motivation behind this project was to create a user-friendly interface that 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/rajfirke/certificate-generator.git
+   git clone https://github.com/rajfirke/Certificate_Generator.git
    cd certificate-generator
 
 
@@ -55,6 +55,6 @@ The motivation behind this project was to create a user-friendly interface that 
  - Upload certificate images, enter participant names, and set printing coordinates.
  - Click the "Generate Certificates" button.
  - Download the generated certificates in a zip file.
- - 
+   
 ## Contributing
   Feel free to contribute to the project by opening issues or submitting pull requests. I would greatly appreciate your feedback and contributions.
